@@ -6,10 +6,23 @@
             <p>{{ destination.description }}</p>
         </div>
     </section>
+    <section class="experiences">
+        <h2>Top experiences in {{ destination.name }}</h2>
+        <div class="cards">
+            <RouterLink v-for="experience in destination.experiences" :key="experience.slug"
+                :to="{ name: 'experience.show', params: { experienceSlug: experience.slug } }">
+                <ExperienceCards :experience="experience"></ExperienceCards>
+            </RouterLink>
+        </div>
+    </section>
 </template>
 
 <script>
+import ExperienceCards from '../components/ExperienceCards.vue'
 export default {
+    components: {
+        ExperienceCards
+    },
     props: {
         id: { type: Number, required: true }
     },
