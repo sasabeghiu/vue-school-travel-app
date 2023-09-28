@@ -1,12 +1,25 @@
 <template>
     <div id="nav">
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/brazil">Brazil</RouterLink>
-        <RouterLink to="/panama">Panama</RouterLink>
-        <RouterLink to="/hawaii">Hawaii</RouterLink>
-        <RouterLink to="/jamaica">Jamaica</RouterLink>
+        <RouterLink id="logo" to="/">Vue School Travel App</RouterLink>
+
+        <RouterLink v-for="destination in destinations" :key="destination.id"
+            :to="{ name: 'destination.show', params: { id: destination.id, slug: destination.slug } }">
+            {{ destination.name }}
+        </RouterLink>
     </div>
 </template>
+
+<script>
+import sourceData from '../data.json'
+
+export default {
+    data() {
+        return {
+            destinations: sourceData.destinations
+        }
+    }
+}
+</script>
 
 <style lang="css">
 #nav .active-link {
