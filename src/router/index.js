@@ -28,8 +28,13 @@ const router = createRouter({
       path: '/jamaica',
       name: 'jamaica',
       component: () => import('../views/JamaicaView.vue')
+    },
+    {
+      path: '/destination/:id',
+      component: () => import('../views/DestinationShow.vue')
     }
-  ]
+  ],
+  linkActiveClass: 'active-link'
 })
 
 export default router

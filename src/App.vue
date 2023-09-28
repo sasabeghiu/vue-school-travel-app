@@ -1,17 +1,14 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-</script>
-
 <template>
-  <div id="nav">
-    <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="/brazil">Brazil</RouterLink>
-    <RouterLink to="/hawaii">Hawaii</RouterLink>
-    <RouterLink to="/panama">Panama</RouterLink>
-    <RouterLink to="/jamaica">Jamaica</RouterLink>
-  </div>
-
+  <TheNavigation></TheNavigation>
   <div class="container">
     <RouterView />
   </div>
 </template>
+
+<script>
+import TheNavigation from './components/TheNavigation.vue';
+
+export default {
+  components: { TheNavigation }
+}
+</script>
