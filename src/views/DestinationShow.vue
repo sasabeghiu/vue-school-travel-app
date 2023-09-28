@@ -10,6 +10,9 @@
 
 <script>
 export default {
+    props: {
+        id: { type: Number, required: true }
+    },
     data() {
         return {
             destination: null
@@ -17,7 +20,7 @@ export default {
     },
     computed: {
         destinationId() {
-            return parseInt(this.$route.params.id)
+            return this.id
         }
     },
     methods: {
