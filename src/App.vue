@@ -3,7 +3,7 @@
   <div class="container">
 
     <RouterView v-slot="{ Component }">
-      <transition name="slide" mode="out-in">
+      <transition name="fade" mode="out-in">
         <component :is="Component" :key="$route.path"></component>
       </transition>
     </RouterView>
@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style>
-/* transition name slide  mode="out-in" */
+/* <transition name="slide" mode="out-in"> */
 .slide-enter-active,
 .slide-leave-active {
   transition: opacity 1s, transform 1s;
@@ -32,7 +32,7 @@ export default {
   transform: translateX(-30%);
 }
 
-/* transition name moveUp */
+/* <transition name="moveUp"> */
 .moveUp-enter-active {
   animation: fadeIn 1s ease-in;
 }
@@ -63,5 +63,16 @@ export default {
   100% {
     transform: translateY(-400px);
   }
+}
+
+/* <transition name="fade" mode="out-in"> */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

@@ -22,6 +22,11 @@ const router = createRouter({
           props: (route) => ({ ...route.params, id: parseInt(route.params.id) })
         }
       ]
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: () => import('../views/NotFound.vue')
     }
   ],
   linkActiveClass: 'active-link'
