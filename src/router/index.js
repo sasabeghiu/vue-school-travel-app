@@ -43,7 +43,15 @@ const router = createRouter({
       component: () => import('../views/NotFound.vue')
     }
   ],
-  linkActiveClass: 'active-link'
+  linkActiveClass: 'active-link',
+  scrollBehaviour(to, from, savedPosition) {
+    return (
+      savedPosition ||
+      new Promise((resolve) => {
+        setTimeout(() => resolve({ top: 0, behaviour: 'smooth' }), 300)
+      })
+    )
+  }
 })
 
 export default router
