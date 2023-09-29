@@ -11,6 +11,19 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '/protected',
+      name: 'protected',
+      component: () => import('../views/ProtectedPage.vue'),
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/LoginPage.vue')
+    },
+    {
       path: '/destination/:id/:slug',
       name: 'destination.show',
       component: () => import('../views/DestinationShow.vue'),
@@ -53,5 +66,10 @@ const router = createRouter({
     )
   }
 })
-
+router.beforeEach((to) => {
+  if (to.meta.requiresAuth && !window.user) {
+    //need to login if not already logged in
+    return { name: 'login' }
+  }
+})
 export default router
