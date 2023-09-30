@@ -23,7 +23,8 @@ export default {
         login() {
             //auth user against api in real word
             window.user = this.username
-            this.$router.push({ name: 'protected' })
+            const redirectPath = this.$route.query.redirect || '/protected'
+            this.$router.push(redirectPath)
         }
     }
 }
