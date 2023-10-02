@@ -13,7 +13,10 @@ const router = createRouter({
     {
       path: '/protected',
       name: 'protected',
-      component: () => import('../views/ProtectedPage.vue'),
+      components: {
+        default: () => import('../views/ProtectedPage.vue'),
+        LeftSidebar: () => import('../components/LeftSideBar.vue')
+      },
       meta: {
         requiresAuth: true
       }
@@ -26,7 +29,10 @@ const router = createRouter({
     {
       path: '/invoices',
       name: 'invoices',
-      component: () => import('../views/InvoicesPage.vue'),
+      components: {
+        default: () => import('../views/InvoicesPage.vue'),
+        LeftSidebar: () => import('../components/LeftSideBar.vue')
+      },
       meta: {
         requiresAuth: true
       }
